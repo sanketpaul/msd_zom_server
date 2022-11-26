@@ -1,0 +1,7 @@
+app.post('/productItem',(req,res) => {
+    console.log(req.body)
+    db.collection('products').find({product_id:{$in:req.body}}).toArray((err,result) =>{
+        if(err) throw err;
+        res.send(result)
+    })
+})

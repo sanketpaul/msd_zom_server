@@ -149,15 +149,25 @@ app.post('/placeorder',(req,res)=>{
     })
 })
 // menuDetails
-app.post('/menuItems',(req,res)=>{
-    if(Array.isArray(req.body.id)){
-        db.collection('menu').find({menu_id:{$in:req.body.id}}).toArray((err,result)=>{
-            if(err) throw err
-            res.send(result)
-        })
-    }else{
-        res.send("invalid input")
-    }
+// app.post('/menuItems',(req,res)=>{
+//     if(Array.isArray(req.body.id)){
+//         db.collection('menu').find({menu_id:{$in:req.body.id}}).toArray((err,result)=>{
+//             if(err) throw err
+//             res.send(result)
+//         })
+//     }else{
+//         res.send("invalid input")
+//     }
+// })
+
+
+app.post('/menuItem',(req,res) => {
+    console.log(req.body);
+    db.collection('menu').find({menu_id:{$in:req.body}}).toArray((err,result) => {
+        if(err) throw err;
+        res.send(result)
+    })
+    
 })
 // Fetch orders Get
 app.get('/orders',(req,res)=>{
