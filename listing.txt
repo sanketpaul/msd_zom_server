@@ -5,3 +5,15 @@ app.post('/productItem',(req,res) => {
         res.send(result)
     })
 })
+
+// menuDetails =====================================================>>
+// app.post('/menuItems',(req,res)=>{
+//     if(Array.isArray(req.body.id)){
+//         db.collection('menu').find({menu_id:{$in:req.body.id}}).toArray((err,result)=>{
+//             if(err) throw err
+//             res.send(result)
+//         })
+//     }else{
+//         res.send("invalid input")
+//     }
+// })

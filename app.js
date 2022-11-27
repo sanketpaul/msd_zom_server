@@ -148,19 +148,9 @@ app.post('/placeorder',(req,res)=>{
         res.send("Order Placed")
     })
 })
-// menuDetails
-// app.post('/menuItems',(req,res)=>{
-//     if(Array.isArray(req.body.id)){
-//         db.collection('menu').find({menu_id:{$in:req.body.id}}).toArray((err,result)=>{
-//             if(err) throw err
-//             res.send(result)
-//         })
-//     }else{
-//         res.send("invalid input")
-//     }
-// })
 
 
+//    ======================================================================>>
 app.post('/menuItem',(req,res) => {
     console.log(req.body);
     db.collection('menu').find({menu_id:{$in:req.body}}).toArray((err,result) => {
@@ -186,7 +176,8 @@ app.get('/orders',(req,res)=>{
 app.put('/updateOrder/:id',(req,res)=>{
     console.log(req.body)
     let id=Number(req.params.id)
-    db.collection('orders').updateOne({orderId:id},{$set:{
+    // idmeansorderid
+    db.collection('orders').updateOne({id:id},{$set:{
         "status":req.body.status,
         "bank_name":req.body.bank_name,
         "date":req.body.date
